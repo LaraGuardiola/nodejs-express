@@ -1,5 +1,17 @@
-console.log('hola')
+import { IncomingMessage, ServerResponse } from 'http';
 
-const num: number = 10
+const http = require('http');
+ 
+const port = 5000;
+ 
+const server = http.createServer((request: IncomingMessage, response: ServerResponse) => {
+  response.end('Hello world!');
+});
 
-console.log(num)
+server.on('error',(e: Error)=>{
+    console.log(e)
+})
+ 
+server.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
